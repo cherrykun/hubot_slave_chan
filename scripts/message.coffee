@@ -1,15 +1,9 @@
 
 
 module.exports = (robot) ->
+	nyusankin = ["ヤクルト","ピルクル","マミー","ジョア","ぐんぐんグルト","ヨーグルッペ","ビックル","Yoo"]
 	robot.hear /乳酸菌/i, (res) ->
-    	res.send res.random ["ヤクルト","ピルクル","マミー","ジョア","ぐんぐんグルト","ヨーグルッペ","ビックル","Yoo"]
-  robot.hear /(さかもと|坂本|sakamoto)/i, (res) ->
-    	res.send "ちんのすけw"
-  robot.hear /(しんのすけ|シンノスケ|慎乃介|慎.介|.乃介|慎乃.)/i, (res) ->
-    	res.send "ちんのすけのこと？"
-  robot.hear /(ちんのすけ|陳乃介|チンノスケ|ﾁﾝﾉｽｹ)/i, (res) ->
-    	res.send "正解だよw"
-
+    	res.send res.random nyusankin
 	robot.hear /(つかれた|疲れた|ツカレタ)/i, (res) ->
     	res.send res.random ["おつかれw","ザコじゃんw","(´._.｀)","壁|ω•`๑)"]
   robot.hear /おはよ(|う)/i, (res) ->
@@ -27,26 +21,5 @@ module.exports = (robot) ->
 		res.send res.random ikemenImage
 
 	jankenGif = ["https://cherrykun.slack.com/files/UDNBR8MDF/FDVG51UT0/image_from_ios__1_.gif","https://cherrykun.slack.com/files/UDNBR8MDF/FDVG53ZP0/image_from_ios.gif"]
-	robot.hear /(jannkenn|じゃんけん|あっちむいてほい|ジャンケン)/i,(res) ->
+	robot.hear /(jannkenn|じゃんけん|あっちむいて|ジャンケン)/i,(res) ->
 		res.send res.random jankenGif
-
-  # ローカルバッチ実行
-	robot.respond /出社/i, (msg) ->
-		msg.reply "いってこいw"
-		@exec = require('child_process').exec
-		command = "C:\\Users\\works\\punchbat\\PunchIn.bat"
-		msg.send "Command: #{command}"
-		@exec command, (error, stdout, stderr) ->
-      msg.reply "ダメやんw" if error?
-      msg.reply "出社させといたw" if stdout?
-      msg.reply "えwwもうしてんじゃんw" if stderr?
-
-	robot.respond /退社/i, (msg) ->
-		msg.reply "おつかれw"
-		@exec = require('child_process').exec
-		command = "C:\\Users\\works\\punchbat\\PunchOut.bat"
-		msg.send "Command: #{command}"
-		@exec command, (error, stdout, stderr) ->
-	    msg.reply "ダメやんw" if error?
-	    msg.reply "退社させといたw" if stdout?
-	    msg.reply "えwwダメやんw" if stderr?
