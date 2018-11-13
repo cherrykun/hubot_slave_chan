@@ -19,10 +19,10 @@ module.exports = (robot) ->
   # #generalと言う部屋に、平日の17:30時に実行
   new cronJob('0 30 17 * * 1-5', () ->
     # ↑のほうで宣言しているsendメソッドを実行する
-    send '#general', "@here そろそろ帰る準備をしよう"
+    send '#general', "@here かえろうよー"
   ).start()
 
-  # #your_channelと言う部屋に、平日の13:00時に実行
-  new cronJob('0 00 13 * * 1-5', () ->
-    send '#your_channel', "@here ランチの時間だよ！！"
+  # #generalと言う部屋に、平日の00:30時に実行
+  new cronJob('0 00 10 * * 1-5', () ->
+    send '#general', "@here はやく出社してよ"
   ).start()

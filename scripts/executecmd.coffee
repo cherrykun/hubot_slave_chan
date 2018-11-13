@@ -1,4 +1,4 @@
-
+cronJob = require('cron').CronJob
 
 module.exports = (robot) ->
   # ローカルバッチ実行
